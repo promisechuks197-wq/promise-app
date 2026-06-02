@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Time Log Entry</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="card">
+    <section class="form-section" id="form-section">
+      <h2 class="section-label">Personal Info</h2>
+      <form id="time-log-form" novalidate>
+        <div class="input-group">
+          <label for="full-name">Full Name</label>
+          <input type="text" id="full-name" name="fullName" maxlength="100" required aria-required="true" />
+        </div>
+        <div class="input-group">
+          <label for="timezone">Locale / Timezone</label>
+          <select id="timezone" name="timezone" required aria-required="true"></select>
+        </div>
+        <hr class="divider" />
+        <h2 class="section-label">Duration</h2>
+        <div class="time-block">
+          <div class="time-field">
+            <label for="hours">Hours</label>
+            <input type="number" id="hours" name="hours" min="0" max="99" value="0" aria-describedby="duration-summary" />
+          </div>
+          <div class="time-field">
+            <label for="minutes">Minutes</label>
+            <input type="number" id="minutes" name="minutes" min="0" max="59" value="0" />
+          </div>
+          <div class="time-field">
+            <label for="seconds">Seconds</label>
+            <input type="number" id="seconds" name="seconds" min="0" max="59" value="0" />
+          </div>
+        </div>
+        <p id="duration-summary" class="duration-summary" aria-live="polite">0h 0m 0s</p>
+        <hr class="divider" />
+        <h2 class="section-label">Proof Photo</h2>
+        <div class="upload-zone" id="upload-zone" tabindex="0" aria-label="Photo upload, click or drag and drop">
+          <p>Drag & drop image here or click to browse</p>
+          <input type="file" id="photo-input" accept="image/png, image/jpeg, image/webp" hidden />
+        </div>
+        <div id="preview-container" class="preview-container" hidden>
+          <img id="preview-image" alt="Preview of uploaded photo" />
+          <button type="button" id="remove-photo" aria-label="Remove uploaded photo">Remove</button>
+        </div>
+        <button type="submit" class="submit-button">Submit</button>
+      </form>
+    </section>
+    <section class="confirmation-section" id="confirmation-section" hidden>
+      <div class="success-card">
+        <h2>Submission Successful</h2>
+        <ul>
+          <li><strong>Name:</strong> <span id="conf-name"></span></li>
+          <li><strong>Timezone:</strong> <span id="conf-timezone"></span></li>
+          <li><strong>Duration:</strong> <span id="conf-duration"></span></li>
+          <li><strong>Proof Photo:</strong> <span id="conf-photo"></span></li>
+          <li><strong>Timestamp:</strong> <span id="conf-timestamp"></span></li>
+        </ul>
+        <button id="submit-another" class="submit-another-button">Submit Another</button>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

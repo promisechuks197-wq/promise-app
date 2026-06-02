@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Time Log Entry</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container" id="app">
+    <!-- Form Card -->
+    <section class="card" id="form-card" aria-labelledby="form-title">
+      <header class="card-header">
+        <h1 id="form-title">Log Time Entry</h1>
+      </header>
+
+      <form id="time-form" novalidate>
+        <!-- Personal Info -->
+        <div class="section">
+          <h2 class="section-label">Personal Info</h2>
+          <div class="field-group">
+            <label for="full-name" class="sr-only">Full Name</label>
+            <input
+              type="text"
+              id="full-name"
+              name="fullName"
+              placeholder="Full Name"
+              maxlength="100"
+              required
+              aria-required="true"
+            />
+          </div>
+          <div class="field-group">
+            <label for="timezone" class="sr-only">Timezone</label>
+            <select id="timezone" name="timezone" required aria-required="true">
+              <option value="" disabled selected>Select Timezone</option>
+            </select>
+          </div>
+        </div>
+        <hr class="divider" />
+        <!-- Duration -->
+        <div class="section">
+          <h2 class="section-label">Duration</h2>
+          <div class="time-block">
+            <div class="time-field">
+              <label for="hours" class="sr-only">Hours</label>
+              <input type="number" id="hours" name="hours" min="0" max="99" value="0" aria-label="Hours" />
+            </div>
+            <div class="time-field">
+              <label for="minutes" class="sr-only">Minutes</label>
+              <input type="number" id="minutes" name="minutes" min="0" max="59" value="0" aria-label="Minutes" />
+            </div>
+            <div class="time-field">
+              <label for="seconds" class="sr-only">Seconds</label>
+              <input type="number" id="seconds" name="seconds" min="0" max="59" value="0" aria-label="Seconds" />
+            </div>
+          </div>
+          <p class="duration-summary" id="duration-summary" aria-live="polite">0h 0m 0s</p>
+        </div>
+        <hr class="divider" />
+        <!-- Proof Photo -->
+        <div class="section">
+          <h2 class="section-label">Proof Photo</h2>
+          <div class="upload-zone" id="upload-zone" tabindex="0">
+            <p>Drag & drop image here or click to browse</p>
+            <input type="file" id="photo-input" accept="image/png, image/jpeg, image/webp" hidden />
+            <div class="preview" id="preview" hidden>
+              <img src="" alt="Preview" id="preview-img" />
+              <button type="button" id="remove-photo" aria-label="Remove photo">✕</button>
+            </div>
+          </div>
+        </div>
+        <div class="error-banner" id="error-banner" role="alert" hidden></div>
+        <button type="submit" class="submit-btn">Submit</button>
+      </form>
+    </section>
+
+    <!-- Confirmation Card (hidden initially) -->
+    <section class="card success-card" id="success-card" aria-labelledby="success-title" hidden>
+      <header class="success-header">
+        <h1 id="success-title">Entry Logged</h1>
+      </header>
+      <div class="success-content">
+        <p><strong>Name:</strong> <span id="conf-name"></span></p>
+        <p><strong>Timezone:</strong> <span id="conf-tz"></span></p>
+        <p><strong>Duration:</strong> <span id="conf-duration"></span></p>
+        <p><strong>Proof Photo:</strong> <span id="conf-photo"></span></p>
+        <p><strong>Submitted At:</strong> <span id="conf-timestamp"></span></p>
+        <button type="button" class="submit-another-btn" id="submit-another">Submit another</button>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
